@@ -235,7 +235,7 @@ String.prototype.rightChars = function(n){
     });
 
 	var initDelay = function() {
-	    highlight($e);
+		highlight($e);
 		return $e;
 	}
 	window.setTimeout(initDelay, $.typer.options.initialDelay)
