@@ -36,6 +36,7 @@ There are some options that are available to you as well:
   typeDelay         : 200,
   clearOnHighlight  : true,
   typerDataAttr     : 'data-typer-targets',
+  typerOrder        : 'random', // or 'sequential'
   typerInterval     : 2000
 }
 ```

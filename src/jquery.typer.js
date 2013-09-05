@@ -19,6 +19,7 @@ String.prototype.rightChars = function(n){
       typeDelay         : 200,
       clearOnHighlight  : true,
       typerDataAttr     : 'data-typer-targets',
+      typerOrder        : 'random',
       typerInterval     : 2000
     },
     highlight,
@@ -33,6 +34,7 @@ String.prototype.rightChars = function(n){
     typeWithAttribute,
     getHighlightInterval,
     getTypeInterval,
+    intervalHandle,
     typerInterval;
 
   spanWithColor = function(color, backgroundColor) {
@@ -144,25 +146,39 @@ String.prototype.rightChars = function(n){
     }, getHighlightInterval());
   };
 
-  typeWithAttribute = function ($e) {
-    var targets;
+  typeWithAttribute = (function () {
+    var last = 0;
 
-    if ($e.data('typing')) {
-      return;
+    return function($e) {
+      var targets;
+
+      if ($e.data('typing')) {
+        return;
+      }
+
+      try {
+        targets = JSON.parse($e.attr($.typer.options.typerDataAttr)).targets;
+      } catch (e) {}
+
+      if (typeof targets === "undefined") {
+        targets = $.map($e.attr($.typer.options.typerDataAttr).split(','), function (e) {
+          return $.trim(e);
+        });
+      }
+
+      if ($.typer.options.typerOrder == 'random') {
+        $e.typeTo(targets[Math.floor(Math.random()*targets.length)]);
+      }
+      else if ($.typer.options.typerOrder == 'sequential') {
+        $e.typeTo(targets[last]);
+        last = (last < targets.length - 1) ? last + 1 : 0;
+      }
+      else {
+        console.error("Type order of '" + $.typer.options.typerOrder + "' not supported");
+        clearInterval(intervalHandle);
+      }
     }
-
-    try {
-      targets = JSON.parse($e.attr($.typer.options.typerDataAttr)).targets;
-    } catch (e) {}
-
-    if (typeof targets === "undefined") {
-      targets = $.map($e.attr($.typer.options.typerDataAttr).split(','), function (e) {
-        return $.trim(e);
-      });
-    }
-
-    $e.typeTo(targets[Math.floor(Math.random()*targets.length)]);
-  };
+  })();
 
   // Expose our options to the world.
   $.typer = (function () {
@@ -186,7 +202,7 @@ String.prototype.rightChars = function(n){
       }
 
       typeWithAttribute($e);
-      setInterval(function () {
+      intervalHandle = setInterval(function () {
         typeWithAttribute($e);
       }, typerInterval());
     });
