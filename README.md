@@ -36,7 +36,10 @@ There are some options that are available to you as well:
   typeDelay         : 200,
   clearOnHighlight  : true,
   typerDataAttr     : 'data-typer-targets',
-  typerInterval     : 2000
+  typerInterval     : 2000,
+  highlightColor  : null, // set to null if not customized
+  textColor      : null, // set to null if not customized
+  initialDelay    : 1000
 }
 ```
 
