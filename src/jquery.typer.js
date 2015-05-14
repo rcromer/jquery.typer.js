@@ -20,7 +20,10 @@ String.prototype.rightChars = function(n){
       clearOnHighlight  : true,
       typerDataAttr     : 'data-typer-targets',
       typerOrder        : 'random',
-      typerInterval     : 2000
+      typerInterval     : 2000,
+      highlightColor	: null, // set to null if not customized
+      textColor			: null, // set to null if not customized
+      initialDelay		: 1000
     },
     highlight,
     clearText,
@@ -242,14 +245,17 @@ String.prototype.rightChars = function(n){
       oldRight: currentText.rightChars(j - 1),
       leftStop: i,
       rightStop: currentText.length - j,
-      primaryColor: $e.css('color'),
-      backgroundColor: $e.css('background-color'),
+      primaryColor: $.typer.options.highlightColor || $e.css('color'),
+      backgroundColor: $.typer.options.textColor || $e.css('background-color'),
       text: newString
     });
 
-    highlight($e);
+	var initDelay = function() {
+		highlight($e);
+		return $e;
+	}
+	window.setTimeout(initDelay, $.typer.options.initialDelay)
 
-    return $e;
   };
 
   //-- Helper methods. These can one day be customized further to include things like ranges of delays.
