@@ -21,17 +21,17 @@ String.prototype.rightChars = function(n){
       typerDataAttr     : 'data-typer-targets',
       typerInterval     : 2000,
       typerOrder        : 'random',
-      startDelay: 1300
+      deleteDelay       : 1000
     },
     highlight,
     clearText,
     backspace,
     type,
     spanWithColor,
+    deleteDelay,
     clearDelay,
     typeDelay,
     clearData,
-    startDelay,
     typeOrder,
     isNumber,
     typeWithAttribute,
@@ -262,8 +262,8 @@ String.prototype.rightChars = function(n){
     return $.typer.options.typerInterval;
   };
 
-   startDelay = function () {
-    return $.typer.options.startDelay;
+   deleteDelay = function () {
+    return $.typer.options.deleteDelay;
   };
   
   typeOrder = function () {
