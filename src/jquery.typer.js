@@ -16,7 +16,7 @@ String.prototype.rightChars = function(n){
       highlightSpeed    : 15,
       typeSpeed         : 100,
       clearDelay        : 500,
-      typeDelay         : 800,
+      typeDelay         : 5000,
       clearOnHighlight  : true,
       typerDataAttr     : 'data-typer-targets',
       typerInterval     : 2000,
