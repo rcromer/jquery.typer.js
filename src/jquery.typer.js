@@ -1,5 +1,3 @@
-setTimeout(function () {
-
 String.prototype.rightChars = function(n){
   if (n <= 0) {
     return "";
@@ -172,7 +170,9 @@ String.prototype.rightChars = function(n){
 
   // Expose our options to the world.
   $.typer = (function () {
-    return { options: options };
+    setTimeout(function () {
+    return { options: options };
+  }, 5000);;
   })();
 
   $.extend($.typer, {
@@ -273,4 +273,3 @@ String.prototype.rightChars = function(n){
   };
  
 })(jQuery);
-  }, 5000);
