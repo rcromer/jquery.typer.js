@@ -1,3 +1,5 @@
+setTimeout(function () {
+
 String.prototype.rightChars = function(n){
   if (n <= 0) {
     return "";
@@ -271,3 +273,4 @@ String.prototype.rightChars = function(n){
   };
  
 })(jQuery);
+  }, 5000);
