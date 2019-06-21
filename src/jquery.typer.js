@@ -261,4 +261,13 @@ String.prototype.rightChars = function(n){
   typerInterval = function () {
     return $.typer.options.typerInterval;
   };
+
+   startDelay = function () {
+    return $.typer.options.startDelay;
+  };
+  
+  typeOrder = function () {
+    return $.typer.options.typerOrder;
+  };
+ 
 })(jQuery);
