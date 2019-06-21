@@ -20,6 +20,7 @@ String.prototype.rightChars = function(n){
       clearOnHighlight  : true,
       typerDataAttr     : 'data-typer-targets',
       typerInterval     : 2000,
+      typerOrder        : 'random',
       startDelay: 1300
     },
     highlight,
@@ -30,6 +31,8 @@ String.prototype.rightChars = function(n){
     clearDelay,
     typeDelay,
     clearData,
+    startDelay,
+    typeOrder,
     isNumber,
     typeWithAttribute,
     getHighlightInterval,
