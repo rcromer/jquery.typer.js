@@ -170,9 +170,7 @@ String.prototype.rightChars = function(n){
 
   // Expose our options to the world.
   $.typer = (function () {
-    setTimeout(function () {
     return { options: options };
-  }, 5000);
   })();
 
   $.extend($.typer, {
