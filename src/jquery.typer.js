@@ -172,7 +172,7 @@ String.prototype.rightChars = function(n){
   $.typer = (function () {
     setTimeout(function () {
     return { options: options };
-  }, 5000);;
+  }, 5000);
   })();
 
   $.extend($.typer, {
